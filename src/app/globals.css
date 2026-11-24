@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ink-black: #17191c;
+  --color-paper-white: #ffffff;
+  --color-mist-gray: #f2f2f3;
+  --color-fog-white: #fafafb;
+  --color-slate-gray: #777b86;
+  --color-ash-gray: #979799;
+  --color-smoke-gray: #a3a6af;
+  --color-blush-peach: #fbe1d1;
+  --color-sienna-brown: #5d2a1a;
+
+  --font-serif-display: var(--font-source-serif), Georgia, serif;
+  --font-sans-ui: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 24px;
+  --radius-elevated: 20px;
+  --radius-input: 16px;
+  --radius-pill: 9999px;
+
+  --shadow-artifact: 0 0 0 1px rgba(4, 23, 43, 0.05), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-modal: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 8px 40px 0 rgba(0, 0, 0, 0.1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html,
+  body {
+    background-color: #ffffff;
+    color: #17191c;
+    font-family: var(--font-sans-ui);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Regla de oro: la tipografia serif de display siempre en peso 400 */
+  h1,
+  h2,
+  .font-serif-editorial {
+    font-family: var(--font-serif-display);
+    font-weight: 400;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.display-hero {
+  font-family: var(--font-serif-display);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 6vw, 5.625rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.heading-lg {
+  font-family: var(--font-serif-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 4.2vw, 4rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.heading-md {
+  font-family: var(--font-serif-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+}
+
+.heading-sm {
+  font-family: var(--font-sans-ui);
+  font-weight: 500;
+  font-size: 1.625rem;
+  line-height: 1.18;
+  letter-spacing: -0.23px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
 }
